@@ -27,6 +27,14 @@ build:
 clean:
 	rm -rf build deburger
 
+FORMAT_FILES := $(shell find src -name '*.c' -o -name '*.h')
+
 # Tells make "clean" is an action, not a file, so it runs even if a file
 # named "clean" exists.
-.PHONY: clean
+.PHONY: clean format format-check
+
+format:
+	clang-format -i $(FORMAT_FILES)
+
+format-check:
+	clang-format --dry-run --Werror $(FORMAT_FILES)
