@@ -1,2 +1,2 @@
 # Deburger
-Debugger for C
+Debugger for C for fun
